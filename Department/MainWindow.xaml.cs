@@ -25,6 +25,10 @@ namespace DepartmentServer
         private static HttpListener listener;
         private static Thread serverThread;
 
+        private TeachersPage teachersPage;
+        private StudentsPage studentsPage;
+        private GroupsPage groupsPage;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -63,6 +67,33 @@ namespace DepartmentServer
         {
             listener?.Stop();
             serverThread?.Join();
+        }
+
+        private void Teachers_Click(object sender, RoutedEventArgs e)
+        {           
+            if (teachersPage == null)
+            {
+                teachersPage = new TeachersPage();
+            }
+            Frame.Content = teachersPage;
+        }
+
+        private void Students_Click(object sender, RoutedEventArgs e)
+        {            
+            if (studentsPage == null)
+            {
+                studentsPage = new StudentsPage();
+            }
+            Frame.Content = studentsPage;
+        }
+
+        private void Groups_Click(object sender, RoutedEventArgs e)
+        {
+            if (groupsPage == null)
+            {
+                groupsPage = new GroupsPage();
+            }
+            Frame.Content = groupsPage;
         }
     }
 }

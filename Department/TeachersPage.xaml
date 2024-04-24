@@ -1,0 +1,58 @@
+﻿<Page x:Class="DepartmentServer.TeachersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:DepartmentServer"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      d:DesignHeight="410" d:DesignWidth="800"
+      Title="TeachersPage">
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Margin" Value="35,10,0,0"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Margin" Value="91,10,0,0"/>
+            <Setter Property="Width" Value="120"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="Azure" Width="800" Height="410" VerticalAlignment="Top">
+        <!-- Labels -->
+        <Label Content="Id" Margin="12,20,0,0"/>
+        <Label Content="Name" Margin="12,70,0,0"/>
+        <Label Content="Login" Margin="12,120,0,0"/>
+        <Label Content="Password" Margin="12,170,0,0"/>
+
+        <!-- Textboxes -->
+        <TextBox Name="TeacherIdText" Text="{Binding TeacherId, Mode=TwoWay}" Margin="120,24,0,0"/>
+        <TextBox Name="TeacherNameText" Text="{Binding TeacherName, Mode=TwoWay}" Margin="120,74,0,0"/>
+        <TextBox Name="TeacherLoginText" Text="{Binding TeacherLogin, Mode=TwoWay}" Margin="120,124,0,0"/>
+        <TextBox Name="TeacherPasswordText" Text="{Binding TeacherPassword, Mode=TwoWay}" Margin="120,174,0,0"/>
+
+        <!-- Buttons -->
+        <Button Content="Insert" Margin="10,320,0,0" Click="Button_Click" Height="34" Width="252"/>
+        <Button Name="UpdateButton" Content="Update" Margin="10,370,0,0" Width="252" Height="34" Click="UpdateButton_Click"/>
+        <Button Name="DeleteButton" Content="Delete" Margin="10,271,0,0" Width="252" Height="34" Click="DeleteButton_Click"/>
+        <Button Name="SearchButton" Content="Search" Margin="10,220,0,0" Width="252" Height="34" Click="SearchButton_Click"/>
+
+        <!-- DataGrid -->        
+        <DataGrid Name="StudentGridData" ItemsSource="{Binding TeacherData}" Margin="267,10,40,6" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding teacher_id}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding teacher_name}" />
+                <DataGridTextColumn Header="Login" Binding="{Binding teacher_login}" />
+                <DataGridTextColumn Header="Password" Binding="{Binding teacher_password}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

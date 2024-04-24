@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Department" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ZENBOOK\SQLEXPRESS;Initial Catalog=Department;Integrated Security=True" SettingsObjectName="DepartmentServer.Properties.Settings" SettingsPropertyName="DepartmentConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Student" Member="Students">
+    <Type Name="Student">
+      <Column Name="student_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="student_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="student_login" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="student_password" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="group_fk" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="StudentsGroup_Student" Member="StudentsGroup" ThisKey="group_fk" OtherKey="group_id" Type="StudentsGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Teacher" Member="Teachers">
+    <Type Name="Teacher">
+      <Column Name="teacher_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="teacher_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="teacher_login" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="teacher_password" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StudentsGroup" Member="StudentsGroups">
+    <Type Name="StudentsGroup">
+      <Column Name="group_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="group_name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="StudentsGroup_Student" Member="Students" ThisKey="group_id" OtherKey="group_fk" Type="Student" />
+    </Type>
+  </Table>
+</Database>
