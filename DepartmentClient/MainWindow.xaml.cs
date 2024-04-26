@@ -1,6 +1,8 @@
-﻿using System;
+﻿//using DepartmentServer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +22,8 @@ namespace DepartmentClient
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {      
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,26 +31,63 @@ namespace DepartmentClient
 
         private async void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
-            ConnectButton.IsEnabled = false;
-            using (HttpClient client = new HttpClient())
+            try
             {
-                try
+                ConnectButton.IsEnabled = false;
+                
+                if (string.IsNullOrWhiteSpace(LoginTextBox.Text) || string.IsNullOrWhiteSpace(PasswordTextBox.Text))
                 {
-                    HttpResponseMessage response = await client.GetAsync("http://localhost:8080");
-                    response.EnsureSuccessStatusCode();
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    StatusTextBlock.Text = "Current status: Online\nResponse: " + responseBody;
+                    MessageBox.Show("Please enter username and password.");
+                    return;
                 }
-                catch (HttpRequestException ex)
-                {
-                    StatusTextBlock.Text = "Current status: Error\nResponse: " + ex.Message;
-                }
-                finally
-                {
-                    ConnectButton.IsEnabled = true;
+                
+                using (HttpClient client = new HttpClient())
+                {                    
+                    string url = ServerIPTextBox.Text;
+                    string loginUrl = url + "login";
+
+                    string requestBody = $"username={LoginTextBox.Text}&password={PasswordTextBox.Text}";
+                    StringContent content = new StringContent(requestBody, Encoding.UTF8, "application/x-www-form-urlencoded");
+                    
+                    HttpResponseMessage response = await client.PostAsync(loginUrl, content);
+                   
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseString = await response.Content.ReadAsStringAsync();
+
+                        if (responseString == "Login successful")
+                        {                            
+                            ClientForm clientForm = new ClientForm();
+                            clientForm.Show();                         
+                            this.Close();
+                        }
+                        else
+                        {                            
+                            MessageBox.Show("Invalid response from server.");
+                        }
+                    }
+                    else
+                    {
+                        if (response.StatusCode == HttpStatusCode.Unauthorized)
+                        {                         
+                            MessageBox.Show("Invalid username or password. Please try again.");
+                        }
+                        else
+                        {                         
+                            MessageBox.Show($"Error: {response.StatusCode}");
+                        }
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {                
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+            finally
+            {
+                ConnectButton.IsEnabled = true;
+            }
         }
     }
 }
+

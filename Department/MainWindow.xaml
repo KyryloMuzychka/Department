@@ -15,7 +15,7 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button Name="Teachers" Content="Teachers" Grid.Row="0" Height="35" MinWidth="100" Margin="5,5,5,5" Click="Teachers_Click"></Button>
             <Button Name="Students" Content="Students" Grid.Row="0" Height="35" MinWidth="100" Margin="5,5,5,5" Click="Students_Click"></Button>
-            <Button x:Name="StudentsGroups" Content="Groups" Height="35" MinWidth="100" Click="Groups_Click"/>
+            <Button x:Name="StudentsGroups" Content="Groups" Height="35" MinWidth="100" Margin="5,5,5,5" Click="Groups_Click"/>
         </StackPanel>
         <Frame Name="Frame" Background="AliceBlue" Grid.Row="1"/>
     </Grid>

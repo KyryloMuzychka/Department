@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DepartmentClient"
         mc:Ignorable="d"
-        Title="Department Client" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock TextWrapping="Wrap" Name="StatusTextBlock" HorizontalAlignment="Center" Margin="0,0,0,0" Text="" VerticalAlignment="Center" Width="auto" Height="auto" />
-
-        <Button x:Name="ConnectButton" Content="Connect" Margin="20,0,20,20" VerticalAlignment="Top" Click="ConnectButton_Click" Grid.Row="1" HorizontalAlignment="Stretch"/>
+        Title="Department Client" Height="268" Width="400" FontSize="18" FontWeight="Bold">
+    <Grid Margin="0,0,0,1">
+        <Button x:Name="ConnectButton" Content="Connect" Margin="5,195,6,0" VerticalAlignment="Top" Click="ConnectButton_Click" Height="30"/>
+        <TextBox HorizontalAlignment="Left" Margin="159,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" Height="26" Name="LoginTextBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="159,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" Height="26" Name="PasswordTextBox"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="59,91,0,0" VerticalAlignment="Top" Height="34" Width="60"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="31,130,0,0" VerticalAlignment="Top" Height="34" Width="95"/>
+        <Label Content="Login form" HorizontalAlignment="Left" Margin="126,8,0,0" VerticalAlignment="Top" Height="34" Width="108"/>
+        <Label Content="Server IP" HorizontalAlignment="Left" Margin="31,48,0,0" VerticalAlignment="Top" Height="34" Width="95"/>
+        <TextBox Text="http://localhost:8080/" HorizontalAlignment="Left" Margin="159,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Height="29" x:Name="ServerIPTextBox"/>
     </Grid>
 </Window>

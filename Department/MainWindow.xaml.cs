@@ -29,6 +29,8 @@ namespace DepartmentServer
         private StudentsPage studentsPage;
         private GroupsPage groupsPage;
 
+        private readonly DataClasses1DataContext db = new DataClasses1DataContext();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -46,20 +48,119 @@ namespace DepartmentServer
         {
             try
             {
-                HttpListenerContext context = listener.GetContext();
-                HttpListenerRequest request = context.Request;
-                HttpListenerResponse response = context.Response;
+                while (listener.IsListening)
+                {
+                    HttpListenerContext context = listener.GetContext();
+                    HttpListenerRequest request = context.Request;
+                    HttpListenerResponse response = context.Response;
 
-                byte[] buffer = Encoding.UTF8.GetBytes("Hello, client!");
-
-                response.ContentType = "text/plain";
-                response.ContentLength64 = buffer.Length;
-                response.OutputStream.Write(buffer, 0, buffer.Length);
-                response.Close();
+                    if (request.HttpMethod == "POST" && request.Url.AbsolutePath == "/login")
+                    {                        
+                        HandleLoginRequest(request, response);
+                    }
+                    else
+                    {                        
+                        response.StatusCode = 404;
+                        response.Close();
+                    }
+                }
             }
             catch (HttpListenerException ex)
             {                
-                Console.WriteLine("HttpListenerException: " + ex.Message);
+            }
+        }
+
+        private void HandleLoginRequest(HttpListenerRequest request, HttpListenerResponse response)
+        {
+            try
+            {                
+                string username = null;
+                string password = null;
+                using (var reader = new System.IO.StreamReader(request.InputStream, request.ContentEncoding))
+                {
+                    string requestBody = reader.ReadToEnd();                    
+                    var parts = requestBody.Split('&');
+                    foreach (var part in parts)
+                    {
+                        var keyValue = part.Split('=');
+                        if (keyValue.Length == 2)
+                        {
+                            var key = keyValue[0];
+                            var value = keyValue[1];
+                            if (key == "username")
+                            {
+                                username = WebUtility.UrlDecode(value);
+                            }
+                            else if (key == "password")
+                            {
+                                password = WebUtility.UrlDecode(value);
+                            }
+                        }
+                    }
+                }                
+                if (IsValidLogin(username, password))
+                {                    
+                    string responseString = "Login successful";
+                    byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                    response.StatusCode = 200;
+                    response.ContentType = "text/plain";
+                    response.ContentLength64 = buffer.Length;
+                    response.OutputStream.Write(buffer, 0, buffer.Length);
+                }
+                else
+                {                    
+                    string responseString = "Invalid credentials";
+                    byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                    response.StatusCode = 401; // Unauthorized
+                    response.ContentType = "text/plain";
+                    response.ContentLength64 = buffer.Length;
+                    response.OutputStream.Write(buffer, 0, buffer.Length);
+                }
+            }
+            catch (Exception ex)
+            {                
+                MessageBox.Show("An error occurred while processing login request: " + ex.Message);             
+                string responseString = "An error occurred while processing the request";
+                byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                response.StatusCode = 500;
+                response.ContentType = "text/plain";
+                response.ContentLength64 = buffer.Length;
+                response.OutputStream.Write(buffer, 0, buffer.Length);
+            }
+            finally
+            {                
+                response.Close();
+            }
+        }
+
+
+        private bool IsValidLogin(string username, string password)
+        {                        
+            var user = AuthenticateUserAsync(username, password).Result;
+
+            if (user != null)
+            {                
+                return true;
+            }       
+            
+            return false;
+        }
+
+
+        private async Task<Teacher> AuthenticateUserAsync(string login, string password)
+        {            
+            var user = await Task.Run(() =>
+            {
+                return (from s in db.Teachers where s.teacher_login == login select s).FirstOrDefault();
+            });
+
+            if (user != null && user.teacher_password == password)
+            {                
+                return user;
+            }
+            else
+            {                
+                return null;
             }
         }
 
