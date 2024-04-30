@@ -1,8 +1,4 @@
-﻿//using DepartmentServer;
-using System;
-using System.Net;
-using System.Net.Http;
-using System.Text;
+﻿using System;
 using System.Windows;
 
 namespace DepartmentClient
@@ -13,9 +9,12 @@ namespace DepartmentClient
     public partial class MainWindow : Window
     {
 
+        private readonly ClientLogic clientLogic;
+
         public MainWindow()
         {
             InitializeComponent();
+            clientLogic = new ClientLogic(ServerIPTextBox.Text);
         }
 
         private async void ConnectButton_Click(object sender, RoutedEventArgs e)
@@ -30,42 +29,24 @@ namespace DepartmentClient
                     return;
                 }
 
-                using (HttpClient client = new HttpClient())
+                string loginUrl = ServerIPTextBox.Text + "login";
+                string requestBody = $"username={LoginTextBox.Text}&password={PasswordTextBox.Text}";
+
+                string responseString = await clientLogic.Connect(loginUrl, requestBody);
+
+                if (responseString == "Login successful")
                 {
-                    string url = ServerIPTextBox.Text;
-                    string loginUrl = url + "login";
-
-                    string requestBody = $"username={LoginTextBox.Text}&password={PasswordTextBox.Text}";
-                    StringContent content = new StringContent(requestBody, Encoding.UTF8, "application/x-www-form-urlencoded");
-
-                    HttpResponseMessage response = await client.PostAsync(loginUrl, content);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string responseString = await response.Content.ReadAsStringAsync();
-
-                        if (responseString == "Login successful")
-                        {
-                            ClientForm clientForm = new ClientForm(url);
-                            clientForm.Show();
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid response from server.");
-                        }
-                    }
-                    else
-                    {
-                        if (response.StatusCode == HttpStatusCode.Unauthorized)
-                        {
-                            MessageBox.Show("Invalid username or password. Please try again.");
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Error: {response.StatusCode}");
-                        }
-                    }
+                    ClientForm clientForm = new ClientForm(ServerIPTextBox.Text);
+                    clientForm.Show();
+                    this.Close();
+                }
+                else if (responseString == "Unauthorized")
+                {
+                    MessageBox.Show("Invalid username or password. Please try again.");
+                }
+                else
+                {
+                    MessageBox.Show($"Error: {responseString}");
                 }
             }
             catch (Exception ex)
@@ -79,4 +60,3 @@ namespace DepartmentClient
         }
     }
 }
-

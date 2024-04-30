@@ -33,27 +33,22 @@ namespace DepartmentClient
         private async Task CreateGroupAsync()
         {
             try
-            {
-                // Проверяем, что имя группы не пустое
+            {                
                 if (string.IsNullOrWhiteSpace(NameTextBox.Text))
                 {
                     MessageBox.Show("Please enter a group name.");
                     return;
                 }
-
-                // Создаем HttpClient для отправки запроса на сервер
+                
                 using (HttpClient client = new HttpClient())
                 {
                     string createGroupUrl = serverAddress + "create_group";
-                    // Формируем данные запроса
                     string groupName = NameTextBox.Text;
                     string requestBody = $"group_name={groupName}";
+                    
                     StringContent content = new StringContent(requestBody, Encoding.UTF8, "application/x-www-form-urlencoded");
-
-                    // Отправляем POST-запрос на сервер для создания новой группы
                     HttpResponseMessage response = await client.PostAsync(createGroupUrl, content);
-
-                    // Обрабатываем ответ от сервера
+                    
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Group created successfully.");
