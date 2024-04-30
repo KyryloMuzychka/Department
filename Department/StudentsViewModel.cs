@@ -1,13 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Data.Entity;
 
 namespace DepartmentServer
 {
@@ -205,7 +200,7 @@ namespace DepartmentServer
             StudentName = string.Empty;
             StudentLogin = string.Empty;
             StudentPassword = string.Empty;
-            GroupFk = 0;            
+            GroupFk = 0;
         }
 
         private bool ValidateInput()

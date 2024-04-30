@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace DepartmentServer
@@ -186,7 +183,7 @@ namespace DepartmentServer
                 ClearTeacherData();
             }
         }
-        
+
         private void ClearTeacherData()
         {
             TeacherName = string.Empty;

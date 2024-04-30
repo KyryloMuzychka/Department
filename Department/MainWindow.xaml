@@ -1,11 +1,11 @@
 ﻿<Window x:Class="DepartmentServer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:DepartmentServer"
-        mc:Ignorable="d"
-        Title="Department Server" Height="515" Width="780"
+        mc:Ignorable="d"               
+        Title="Department Server" Height="493" Width="780"
         Closing="Window_Closing">
     <Grid Margin="0,0,0,0">
         <Grid.RowDefinitions>
@@ -16,7 +16,8 @@
             <Button Name="Teachers" Content="Teachers" Grid.Row="0" Height="35" MinWidth="100" Margin="5,5,5,5" Click="Teachers_Click"></Button>
             <Button Name="Students" Content="Students" Grid.Row="0" Height="35" MinWidth="100" Margin="5,5,5,5" Click="Students_Click"></Button>
             <Button x:Name="StudentsGroups" Content="Groups" Height="35" MinWidth="100" Margin="5,5,5,5" Click="Groups_Click"/>
+            <Button x:Name="ChartButton" Content="Chart" Height="35" MinWidth="100" Click="ChartButton_Click" />
         </StackPanel>
-        <Frame Name="Frame" Background="AliceBlue" Grid.Row="1"/>
+        <Frame Name="Frame" Background="AliceBlue" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

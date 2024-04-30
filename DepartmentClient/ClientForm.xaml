@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DepartmentClient"
         mc:Ignorable="d"
-        Title="ClientForm" Height="450" Width="800">
+        Title="ClientForm" Height="200" Width="200">
     <Grid>
-        
+        <Label Content="Create new group" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top" Background="Transparent" FontWeight="Bold" Width="112"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="40,49,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="NameTextBox" HorizontalAlignment="Center" Margin="0,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="110"/>
+        <Button Name="CreateGroupButton" Content="Create" HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" Width="110" Height="27" Click="CreateGroupButton_Click" />
+
     </Grid>
 </Window>

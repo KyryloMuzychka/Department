@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace DepartmentServer
@@ -13,7 +10,7 @@ namespace DepartmentServer
     {
         private readonly DataClasses1DataContext db = new DataClasses1DataContext();
         private int _groupId;
-        private string _groupName;
+        private string _groupName;        
 
         private List<StudentsGroup> _groupData;
         public List<StudentsGroup> GroupData
