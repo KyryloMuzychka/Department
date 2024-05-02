@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DepartmentClient</name>
+    </assembly>
+    <members>
+        <member name="T:DepartmentClient.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:DepartmentClient.ClientForm">
+            <summary>
+            Interaction logic for ClientForm.xaml
+            </summary>
+            <summary>
+            ClientForm
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.ClientForm.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ClientForm class.
+            </summary>
+            <param name="serverAddress">The address of the server.</param>
+        </member>
+        <member name="P:DepartmentClient.ClientForm.ServerAddress">
+            <summary>
+            Gets the server address.
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.ClientForm.ClientForm_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Handles the closing event of the ClientForm window.
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.ClientForm.CreateGroupAsync">
+            <summary>
+            Asynchronously creates a new group.
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.ClientForm.CreateGroupButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the Create Group button.
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.ClientForm.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DepartmentClient.ClientLogic">
+            <summary>
+            Class responsible for client-side logic.
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.ClientLogic.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ClientLogic class.
+            </summary>
+            <param name="baseUrl">The base URL of the server.</param>
+        </member>
+        <member name="M:DepartmentClient.ClientLogic.Connect(System.String,System.String)">
+            <summary>
+            Connects to the server asynchronously and returns the response.
+            </summary>
+            <param name="loginUrl">The URL for login request.</param>
+            <param name="requestBody">The request body to be sent.</param>
+            <returns>The response from the server.</returns>
+        </member>
+        <member name="T:DepartmentClient.HttpRequestHandlerClient">
+            <summary>
+            Class responsible for handling HTTP requests to the server.
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.HttpRequestHandlerClient.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the HttpRequestHandlerClient class.
+            </summary>
+            <param name="baseUrl">The base URL of the server.</param>
+        </member>
+        <member name="M:DepartmentClient.HttpRequestHandlerClient.PostAsync(System.String,System.String)">
+            <summary>
+            Sends a POST request to the specified endpoint with the provided request body asynchronously.
+            </summary>
+            <param name="endpoint">The endpoint to send the request to.</param>
+            <param name="requestBody">The request body to send.</param>
+            <returns>The response from the server as a string.</returns>
+        </member>
+        <member name="T:DepartmentClient.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.MainWindow.#ctor">
+            <summary>
+            Initializes a new instance of the MainWindow class.
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.MainWindow.ConnectButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the Connect button.
+            </summary>
+        </member>
+        <member name="M:DepartmentClient.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

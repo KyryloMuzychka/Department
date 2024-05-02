@@ -8,15 +8,27 @@ using System.Windows;
 
 namespace DepartmentServer
 {
+    /// <summary>
+    /// Handles HTTP requests for login and group creation.
+    /// </summary>
     public class HttpRequestHandler
     {
         private readonly DataClasses1DataContext db;
 
+        /// <summary>
+        /// Initializes a new instance of the HttpRequestHandler class with the specified data context.
+        /// </summary>
+        /// <param name="dataContext">The data context for database access.</param>
         public HttpRequestHandler(DataClasses1DataContext dataContext)
         {
             db = dataContext;
         }
 
+        /// <summary>
+        /// Handles a login request.
+        /// </summary>
+        /// <param name="request">The HTTP request.</param>
+        /// <param name="response">The HTTP response.</param>
         public void HandleLoginRequest(HttpListenerRequest request, HttpListenerResponse response)
         {
             try
@@ -80,6 +92,11 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Handles a request to create a new group.
+        /// </summary>
+        /// <param name="request">The HTTP request.</param>
+        /// <param name="response">The HTTP response.</param>
         public void HandleCreateGroup(HttpListenerRequest request, HttpListenerResponse response)
         {
             try
@@ -134,6 +151,12 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Asynchronously authenticates a user based on the provided login and password.
+        /// </summary>
+        /// <param name="login">The login username of the user.</param>
+        /// <param name="password">The password of the user.</param>
+        /// <returns>A Task representing the asynchronous operation, containing the authenticated user if successful; otherwise, null.</returns>
         private async Task<Teacher> AuthenticateUserAsync(string login, string password)
         {
             var user = await Task.Run(() =>
@@ -151,6 +174,12 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Synchronously checks if the login credentials (username and password) are valid.
+        /// </summary>
+        /// <param name="username">The login username.</param>
+        /// <param name="password">The login password.</param>
+        /// <returns>True if the login credentials are valid; otherwise, false.</returns>
         private bool IsValidLogin(string username, string password)
         {
             var user = AuthenticateUserAsync(username, password).Result;

@@ -1,0 +1,665 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DepartmentServer</name>
+    </assembly>
+    <members>
+        <member name="T:DepartmentServer.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:DepartmentServer.Chart">
+            <summary>
+            Represents a chart for displaying data related to groups and students.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.Chart.#ctor(ScottPlot.WPF.WpfPlot)">
+            <summary>
+            Constructs a new instance of the Chart class.
+            </summary>
+            <param name="_plot">The WpfPlot object to be used for plotting.</param>
+        </member>
+        <member name="M:DepartmentServer.Chart.PlotScatter">
+            <summary>
+            Plots a scatter plot representing the number of students in each group.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.Chart.SavePlotAsPng">
+            <summary>
+            Saves the plot as a PNG image file.
+            </summary>
+        </member>
+        <member name="T:DepartmentServer.ChartPage">
+            <summary>
+            Represents the page for displaying a chart.
+            </summary>
+            <summary>
+            ChartPage
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.ChartPage.#ctor">
+            <summary>
+            Constructs a new instance of the ChartPage class.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.ChartPage.SaveClickButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Save button click event.
+            Saves the plot as a PNG image.
+            </summary>
+            <param name="sender">The object that raised the event.</param>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="M:DepartmentServer.ChartPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DepartmentServer.DatabaseManager">
+            <summary>
+            Represents a manager for accessing the database.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.DatabaseManager.#ctor">
+            <summary>
+            Constructs a new instance of the DatabaseManager class.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.DatabaseManager.GetDatabase">
+            <summary>
+            Gets the database context.
+            </summary>
+            <returns>The database context.</returns>
+        </member>
+        <member name="T:DepartmentServer.GroupsPage">
+            <summary>
+            Represents the page for managing groups.
+            </summary>
+            <summary>
+            GroupsPage
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsPage.#ctor">
+            <summary>
+            Constructs a new instance of the GroupsPage class.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsPage.SearchButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Search button click event.
+            Searches for a group.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsPage.DeleteButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Delete button click event.
+            Deletes a group.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsPage.Button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Add button click event.
+            Adds a new group.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsPage.UpdateButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Update button click event.
+            Updates an existing group.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DepartmentServer.GroupsViewModel">
+            <summary>
+            Represents the view model for managing groups.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.GroupsViewModel.db">
+            <summary>
+            Database context for interacting with group data.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.GroupsViewModel._groupId">
+            <summary>
+            Represents the ID of the group.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.GroupsViewModel._groupName">
+            <summary>
+            Represents the name of the group.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.GroupsViewModel._groupData">
+            <summary>
+            Represents the list of group data.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.GroupsViewModel.GroupData">
+            <summary>
+            Gets or sets the list of groups.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsViewModel.LoadData">
+            <summary>
+            Loads group data from the database.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.GroupsViewModel.GroupId">
+            <summary>
+            Gets or sets the group ID.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.GroupsViewModel.GroupName">
+            <summary>
+            Gets or sets the group name.
+            </summary>
+        </member>
+        <member name="E:DepartmentServer.GroupsViewModel.PropertyChanged">
+            <summary>
+            Event that is raised when a property value changes.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the PropertyChanged event.
+            </summary>
+            <param name="propertyName">The name of the property that has changed.</param>
+        </member>
+        <member name="M:DepartmentServer.GroupsViewModel.AddGroup">
+            <summary>
+            Adds a new group.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsViewModel.UpdateGroup">
+            <summary>
+            Updates an existing group.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsViewModel.DeleteGroup">
+            <summary>
+            Deletes a group.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsViewModel.SearchGroup">
+            <summary>
+            Searches for a group by ID.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.GroupsViewModel.ValidateInput">
+            <summary>
+            Validates the input by checking if the group name is not null, empty, or contains only whitespace characters.
+            </summary>
+            <returns>True if the input is valid; otherwise, false.</returns>
+        </member>
+        <member name="T:DepartmentServer.HttpRequestHandler">
+            <summary>
+            Handles HTTP requests for login and group creation.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.HttpRequestHandler.#ctor(DepartmentServer.DataClasses1DataContext)">
+            <summary>
+            Initializes a new instance of the HttpRequestHandler class with the specified data context.
+            </summary>
+            <param name="dataContext">The data context for database access.</param>
+        </member>
+        <member name="M:DepartmentServer.HttpRequestHandler.HandleLoginRequest(System.Net.HttpListenerRequest,System.Net.HttpListenerResponse)">
+            <summary>
+            Handles a login request.
+            </summary>
+            <param name="request">The HTTP request.</param>
+            <param name="response">The HTTP response.</param>
+        </member>
+        <member name="M:DepartmentServer.HttpRequestHandler.HandleCreateGroup(System.Net.HttpListenerRequest,System.Net.HttpListenerResponse)">
+            <summary>
+            Handles a request to create a new group.
+            </summary>
+            <param name="request">The HTTP request.</param>
+            <param name="response">The HTTP response.</param>
+        </member>
+        <member name="M:DepartmentServer.HttpRequestHandler.AuthenticateUserAsync(System.String,System.String)">
+            <summary>
+            Asynchronously authenticates a user based on the provided login and password.
+            </summary>
+            <param name="login">The login username of the user.</param>
+            <param name="password">The password of the user.</param>
+            <returns>A Task representing the asynchronous operation, containing the authenticated user if successful; otherwise, null.</returns>
+        </member>
+        <member name="M:DepartmentServer.HttpRequestHandler.IsValidLogin(System.String,System.String)">
+            <summary>
+            Synchronously checks if the login credentials (username and password) are valid.
+            </summary>
+            <param name="username">The login username.</param>
+            <param name="password">The login password.</param>
+            <returns>True if the login credentials are valid; otherwise, false.</returns>
+        </member>
+        <member name="T:DepartmentServer.HttpServer">
+            <summary>
+            Represents an HTTP server for handling login and group creation requests.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.HttpServer.#ctor(System.String,DepartmentServer.DataClasses1DataContext)">
+            <summary>
+            Initializes a new instance of the HttpServer class with the specified URL prefix and data context.
+            </summary>
+            <param name="url">The URL prefix on which the server will listen for incoming HTTP requests.</param>
+            <param name="dataContext">The data context for database access.</param>
+        </member>
+        <member name="M:DepartmentServer.HttpServer.StartServer">
+            <summary>
+            Starts the HTTP server and listens for incoming requests.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.HttpServer.Stop">
+            <summary>
+            Stops the HTTP server.
+            </summary>
+        </member>
+        <member name="T:DepartmentServer.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.MainWindow.httpServer">
+            <summary>
+            HTTP server instance for handling requests.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.MainWindow.databaseManager">
+            <summary>
+            Database manager instance for managing database operations.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.MainWindow.teachersPage">
+            <summary>
+            Page instance for displaying teachers' information.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.MainWindow.studentsPage">
+            <summary>
+            Page instance for displaying students' information.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.MainWindow.groupsPage">
+            <summary>
+            Page instance for displaying groups' information.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.MainWindow.chartPage">
+            <summary>
+            Page instance for displaying charts.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.MainWindow.#ctor">
+            <summary>
+            Constructor for MainWindow class.
+            Initializes a new instance of the MainWindow class, including HTTP server and database manager.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.MainWindow.Window_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Event handler for the window closing event.
+            Stops the HTTP server when the window is closing.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.MainWindow.Teachers_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Teachers button click event.
+            Displays the TeachersPage in the frame.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.MainWindow.Students_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Students button click event.
+            Displays the StudentsPage in the frame.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.MainWindow.Groups_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Groups button click event.
+            Displays the GroupsPage in the frame.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.MainWindow.ChartButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Chart button click event.
+            Displays the ChartPage in the frame.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DepartmentServer.StudentsPage">
+            <summary>
+            Interaction logic for StudentsPage.xaml
+            </summary>
+            <summary>
+            StudentsPage
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.StudentsPage._viewModel">
+            <summary>
+            View model instance for managing student data.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsPage.#ctor">
+            <summary>
+            Constructor for StudentsPage class.
+            Initializes a new instance of the StudentsPage class and sets up the view model.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsPage.Button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Add button click event.
+            Adds a new student and reloads the data.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsPage.UpdateButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Update button click event.
+            Updates a student's information and reloads the data.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsPage.SearchButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Search button click event.
+            Searches for a student.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsPage.DeleteButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler for the Delete button click event.
+            Deletes a student and reloads the data.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DepartmentServer.StudentsViewModel">
+            <summary>
+            View model class for managing student data.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.StudentsViewModel.db">
+            <summary>
+            Database context for interacting with student data.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.StudentsViewModel._studentId">
+            <summary>
+            Represents the ID of the student.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.StudentsViewModel._studentName">
+            <summary>
+            Represents the name of the student.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.StudentsViewModel._studentLogin">
+            <summary>
+            Represents the login username of the student.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.StudentsViewModel._studentPassword">
+            <summary>
+            Represents the password associated with the student's login.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.StudentsViewModel._groupFk">
+            <summary>
+            Represents the foreign key referencing the group to which the student belongs.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.StudentsViewModel._studentData">
+            <summary>
+            Represents the list of student data.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.StudentsViewModel.StudentData">
+            <summary>
+            Gets or sets the list of student data.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsViewModel.LoadData">
+            <summary>
+            Loads student data from the database.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.StudentsViewModel.StudentId">
+            <summary>
+            Gets or sets the student ID.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.StudentsViewModel.StudentName">
+            <summary>
+            Gets or sets the student name.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.StudentsViewModel.StudentLogin">
+            <summary>
+            Gets or sets the student login.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.StudentsViewModel.StudentPassword">
+            <summary>
+            Gets or sets the student password.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.StudentsViewModel.GroupFk">
+            <summary>
+            Gets or sets the group foreign key.
+            </summary>
+        </member>
+        <member name="E:DepartmentServer.StudentsViewModel.PropertyChanged">
+            <summary>
+            Event raised when a property value changes.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Invokes the PropertyChanged event.
+            </summary>
+            <param name="propertyName">The name of the property that changed.</param>
+        </member>
+        <member name="M:DepartmentServer.StudentsViewModel.AddStudent">
+            <summary>
+            Adds a new student record to the database.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsViewModel.UpdateStudent">
+            <summary>
+            Updates an existing student record in the database.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsViewModel.DeleteStudent">
+            <summary>
+            Deletes a student record from the database.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsViewModel.SearchStudent">
+            <summary>
+            Searches for a student record in the database.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsViewModel.ClearStudentData">
+            <summary>
+            Clears the input fields for student data.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.StudentsViewModel.ValidateInput">
+            <summary>
+            Validates input for adding or updating student records.
+            </summary>
+            <returns>True if input is valid, otherwise false.</returns>
+        </member>
+        <member name="T:DepartmentServer.TeachersPage">
+            <summary>
+            Interaction logic for TeachersPage.xaml
+            </summary>
+            <summary>
+            TeachersPage
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersPage.#ctor">
+            <summary>
+            Initializes a new instance of the TeachersPage class.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersPage.Button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the Add button.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersPage.UpdateButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the Update button.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersPage.SearchButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the Search button.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersPage.DeleteButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Handles the Click event of the Delete button.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:DepartmentServer.TeachersViewModel">
+            <summary>
+            View model class for managing teacher data.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.TeachersViewModel.db">
+            <summary>
+            Database context for interacting with teacher data.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.TeachersViewModel._teacherId">
+            <summary>
+            Represents the ID of the teacher.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.TeachersViewModel._teacherName">
+            <summary>
+            Represents the name of the teacher.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.TeachersViewModel._teacherLogin">
+            <summary>
+            Represents the login username of the teacher.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.TeachersViewModel._teacherPassword">
+            <summary>
+            Represents the password associated with the teacher's login.
+            </summary>
+        </member>
+        <member name="F:DepartmentServer.TeachersViewModel._teacherData">
+            <summary>
+            Represents the list of teacher data.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.TeachersViewModel.TeacherData">
+            <summary>
+            Gets or sets the list of teacher data.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersViewModel.LoadData">
+            <summary>
+            Loads teacher data from the database.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.TeachersViewModel.TeacherId">
+            <summary>
+            Gets or sets the teacher ID.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.TeachersViewModel.TeacherName">
+            <summary>
+            Gets or sets the teacher name.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.TeachersViewModel.TeacherLogin">
+            <summary>
+            Gets or sets the teacher login.
+            </summary>
+        </member>
+        <member name="P:DepartmentServer.TeachersViewModel.TeacherPassword">
+            <summary>
+            Gets or sets the teacher password.
+            </summary>
+        </member>
+        <member name="E:DepartmentServer.TeachersViewModel.PropertyChanged">
+            <summary>
+            Event raised when a property value changes.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Invokes the PropertyChanged event.
+            </summary>
+            <param name="propertyName">The name of the property that changed.</param>
+        </member>
+        <member name="M:DepartmentServer.TeachersViewModel.AddTeacher">
+            <summary>
+            Adds a new teacher record to the database.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersViewModel.UpdateTeacher">
+            <summary>
+            Updates an existing teacher record in the database.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersViewModel.DeleteTeacher">
+            <summary>
+            Deletes a teacher record from the database.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersViewModel.SearchTeacher">
+            <summary>
+            Searches for a teacher record in the database.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersViewModel.ClearTeacherData">
+            <summary>
+            Clears the input fields for teacher data.
+            </summary>
+        </member>
+        <member name="M:DepartmentServer.TeachersViewModel.ValidateInput">
+            <summary>
+            Validates input for adding or updating teacher records.
+            </summary>
+            <returns>True if input is valid, otherwise false.</returns>
+        </member>
+    </members>
+</doc>

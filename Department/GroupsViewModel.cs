@@ -6,13 +6,34 @@ using System.Windows;
 
 namespace DepartmentServer
 {
+    /// <summary>
+    /// Represents the view model for managing groups.
+    /// </summary>
     public class GroupsViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Database context for interacting with group data.
+        /// </summary>
         private readonly DataClasses1DataContext db = new DataClasses1DataContext();
-        private int _groupId;
-        private string _groupName;        
 
+        /// <summary>
+        /// Represents the ID of the group.
+        /// </summary>
+        private int _groupId;
+
+        /// <summary>
+        /// Represents the name of the group.
+        /// </summary>
+        private string _groupName;
+
+        /// <summary>
+        /// Represents the list of group data.
+        /// </summary>
         private List<StudentsGroup> _groupData;
+
+        /// <summary>
+        /// Gets or sets the list of groups.
+        /// </summary>
         public List<StudentsGroup> GroupData
         {
             get { return _groupData; }
@@ -23,6 +44,9 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Loads group data from the database.
+        /// </summary>
         public void LoadData()
         {
             try
@@ -39,6 +63,9 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Gets or sets the group ID.
+        /// </summary>
         public int GroupId
         {
             get => _groupId;
@@ -49,6 +76,9 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Gets or sets the group name.
+        /// </summary>
         public string GroupName
         {
             get => _groupName;
@@ -59,13 +89,24 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Event that is raised when a property value changes.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Raises the PropertyChanged event.
+        /// </summary>
+        /// <param name="propertyName">The name of the property that has changed.</param>
         protected virtual void OnPropertyChanged(string propertyName)
         {
+            // Invoke the PropertyChanged event with the name of the property that has changed
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Adds a new group.
+        /// </summary>
         public void AddGroup()
         {
             if (ValidateInput())
@@ -85,6 +126,9 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Updates an existing group.
+        /// </summary>
         public void UpdateGroup()
         {
             if (int.TryParse(GroupId.ToString(), out int groupId))
@@ -109,6 +153,9 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Deletes a group.
+        /// </summary>
         public void DeleteGroup()
         {
             if (int.TryParse(GroupId.ToString(), out int groupId))
@@ -132,6 +179,9 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Searches for a group by ID.
+        /// </summary>
         public void SearchGroup()
         {
             if (GroupId != 0)
@@ -154,6 +204,10 @@ namespace DepartmentServer
             }
         }
 
+        /// <summary>
+        /// Validates the input by checking if the group name is not null, empty, or contains only whitespace characters.
+        /// </summary>
+        /// <returns>True if the input is valid; otherwise, false.</returns>
         private bool ValidateInput()
         {
             return !string.IsNullOrWhiteSpace(GroupName);

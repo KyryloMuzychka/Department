@@ -8,15 +8,20 @@ namespace DepartmentClient
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private readonly ClientLogic clientLogic;
 
+        /// <summary>
+        /// Initializes a new instance of the MainWindow class.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             clientLogic = new ClientLogic(ServerIPTextBox.Text);
         }
 
+        /// <summary>
+        /// Handles the Click event of the Connect button.
+        /// </summary>
         private async void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
             try
